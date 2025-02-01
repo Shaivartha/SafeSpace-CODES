@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Self-Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #08336d;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #08336d;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .home-icon {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home-icon img {
+            width: 30px;
+            height: 30px;
+            
+        }
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="http://127.0.0.1:5500/Home.html">
+            <div class="home-icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Home">
+            </div>
+        </a>
+        <div>BrightSpace</div>
+        <div class="menu-icon">&#9776;</div>
+    </div>
+
+    <div class="container">
+        <h2>Mental Health Self-Assessment Test</h2>
+        <div id="question-container"></div>
+        <button id="yesButton" style="display: none;" onclick="answerQuestion('yes')">Yes</button>
+        <button id="noButton" style="display: none;" onclick="answerQuestion('no')">No</button>
+        <button id="backButton" style="display: none;" onclick="goBack()">Back</button>
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <h3 id="result"></h3>
+        <p id="motivational-quote"></p>
+    </div>
+
+    <script>
+        const questions = [
+            "Do you often feel sad or down without a clear reason?",
+            "Do you struggle to find motivation for daily activities?",
+            "Have you experienced a loss of interest in things you used to enjoy?",
+            "Do you often feel anxious, worried, or overwhelmed?",
+            "Do you have difficulty sleeping or experience frequent nightmares?",
+            "Have you been feeling excessively tired or low in energy?",
+            "Do you have difficulty concentrating or making decisions?",
+            "Have you been feeling worthless or guilty without a clear reason?",
+            "Do you experience sudden mood swings or irritability?",
+            "Have you had thoughts of harming yourself or others?",
+            "Do you often feel lonely, even when you're with people?",
+            "Have you noticed significant changes in your appetite?",
+            "Do you often feel restless or unable to relax?",
+            "Have you lost confidence in yourself or feel inadequate?",
+            "Do you find it difficult to handle stress in daily life?",
+            "Do you avoid social interactions or isolate yourself frequently?",
+            "Have you felt hopeless about the future?",
+            "Do you have frequent physical symptoms like headaches or body pain without a medical reason?",
+            "Do you feel detached from reality or experience episodes of dissociation?",
+            "Have you lost interest in self-care, hygiene, or basic daily routines?"
+        ];
+
+        const motivationalQuotes = [
+            "You are stronger than you think.",
+            "Every day may not be good, but there's something good in every day.",
+            "Your mental health is a priority, take care of yourself.",
+            "It's okay to not be okay, but never give up.",
+            "You are not alone. Reach out, talk, and heal."
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answers = [];
+
+        function showQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                document.getElementById("question-container").innerText = questions[currentQuestionIndex];
+                document.getElementById("yesButton").style.display = "inline-block";
+                document.getElementById("noButton").style.display = "inline-block";
+                document.getElementById("backButton").style.display = currentQuestionIndex > 0 ? "inline-block" : "none";
+                updateProgressBar();
+            } else {
+                displayResult();
+            }
+        }
+
+        function answerQuestion(answer) {
+            answers[currentQuestionIndex] = answer;
+            if (answer === "yes") {
+                score++;
+            }
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        function goBack() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                if (answers[currentQuestionIndex] === "yes") {
+                    score--;
+                }
+                showQuestion();
+            }
+        }
+
+        function updateProgressBar() {
+            let progress = (currentQuestionIndex / questions.length) * 100;
+            let progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = progress + "%";
+            if (score <= 5) {
+                progressBar.style.backgroundColor = "green";
+            } else if (score <= 10) {
+                progressBar.style.backgroundColor = "#DAA520"; // Darker shade of yellow
+            } else {
+                progressBar.style.backgroundColor = "red";
+            }
+        }
+
+        function displayResult() {
+            let resultText = "";
+            if (score <= 5) {
+                resultText = "Your mental health appears to be in a good state. Keep maintaining a healthy lifestyle!";
+            } else if (score <= 10) {
+                resultText = "You may be experiencing mild struggles. Try self-care practices and talk to a friend or counselor.";
+            } else if (score <= 15) {
+                resultText = "You might be facing moderate distress. Seeking professional help, like therapy, could be beneficial.";
+            } else {
+                resultText = "Your mental health may be in a critical state. Please reach out to a mental health professional immediately.";
+            }
+            document.getElementById("question-container").innerText = resultText;
+            document.getElementById("yesButton").style.display = "none";
+            document.getElementById("noButton").style.display = "none";
+            document.getElementById("backButton").style.display = "none";
+            document.getElementById("motivational-quote").innerText = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+        }
+
+        window.onload = showQuestion;
+    </script>
+</body>
+</html>

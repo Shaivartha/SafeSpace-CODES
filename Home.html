@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #08336d;
+            color: white;
+            text-align: center;
+            line-height: 1.1;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 40px 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: white;
+            color: #08336d;
+        }
+        .menu-icon {
+            font-size: 40px;
+            cursor: pointer;
+        }
+        .test-btn {
+            background-color: #ffff;
+            color: #08336d;
+            padding: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+        }
+        .content {
+            flex: 1;
+            text-align: left;
+            max-width: 75%;
+        }
+        h2 {
+            font-size: 60px;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            font-style: bold;
+            font-style: italic;
+        }
+        q {
+            font-family: Arial, sans-serif;
+            font-size: 30px;
+            margin-bottom: 15px;
+            font-style: italic;
+            quotes: none; 
+        }
+
+        a {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .join-btn {
+            background: white;
+            color: #08336d;
+            padding: 12px 24px;
+            font-size: 22px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-box {
+            background: white;
+            color: black;
+            padding: 25px;
+            border-radius: 10px;
+            width: 320px;
+            height: 420px;
+            text-align: left;
+        }
+        .chat-header {
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .chat-messages {
+            height: 80%;
+            overflow-y: auto;
+        }
+        .message {
+            background: #f1f1f1;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .chat-input {
+            height: 35px;
+            background: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>SafeSpace</h1>
+        <header>
+            <a href="http://127.0.0.1:5500/Test.html">
+              <button class="test-btn">Mental Health Test</button>
+            </a>
+          </header>
+                  
+        <button class="test-btn">Join Community</button>
+        <button class="test-btn">Feedback</button>
+        <button class="test-btn">Contact Us</button>
+        <div class="menu-icon">&#9776;</div>
+    </nav>
+    <section class="hero">
+        <div class="content">
+            <h2>Speak your heart, <br>Free your soul.</h2>
+            <h3 class="subtext">& express freely.<br/></h3>
+            <button class="join-btn">Join Us<br/></button>
+            <q class="welcome-text"><br/><br/><br/>Welcome to the Non-Judgemental Space, <br> connect with people who truly get it.</q>
+            <a class="signature"><br/><br/>- SafeSpace</a>
+        </div>
+        <div class="chat-box" style="display: flex; justify-content: center; align-items: center; background: none; padding: 1000; margin: 100; margin-left: -100px; margin-top: 40px; border: none; box-shadow: 0 0 0px #ffff;">
+            <img src="Chatbox.png" alt="Chat Box" style="width: 384px; height: 504px; border-radius: 10px; display: grid; padding: 1000; margin: 100; margin-left: -100px; margin-top: 40px; border: none;box-shadow: 0 0 20px #ffff;">
+        </div>
+        <div class="chat-input"></div>
+    </section>
+</body>
+</html>

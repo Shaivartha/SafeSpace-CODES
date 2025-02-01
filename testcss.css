@@ -1,0 +1,26 @@
+/* Ensure all buttons are in the same line */
+header {
+    display: flex;
+    align-items: center; /* Vertically aligns buttons */
+    justify-content: space-between; /* Distributes the space between buttons */
+}
+
+.test-btn {
+    margin: 0; /* Remove any default margin */
+    padding: 10px 20px; /* Adjust padding for better button size */
+    font-size: 16px; /* Adjust font size */
+    background-color: #4CAF50; /* Set background color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.test-btn:hover {
+    background-color: #45a049; /* Hover effect for button */
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+}
