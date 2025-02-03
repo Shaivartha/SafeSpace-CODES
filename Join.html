@@ -22,6 +22,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+        const BASE_URL = 'https://safespace-zl5p.onrender.com';
         // Handle the email form submission
         $('#emailForm').on('submit', function (e) {
             e.preventDefault();
@@ -30,7 +32,7 @@
 
             // Send the POST request to the /send-otp endpoint
             $.ajax({
-                url: 'https://safespace-zl5p.onrender.com/send-otp',
+                url: '{BASE_URL}/send-otp',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ email: email }),
@@ -54,7 +56,7 @@
 
             // Send the POST request to the /verify-otp endpoint
             $.ajax({
-                url: 'https://safespace-zl5p.onrender.com/verify-otp',
+                url: '{BASE_URL}/verify-otp',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ email: email, otp: otp }),
