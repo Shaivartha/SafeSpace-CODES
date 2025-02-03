@@ -25,6 +25,10 @@ mail = Mail(app)
 # Temporary OTP storage
 otp_store = {}
 
+@app.route('/')
+def home():
+    return 'OTP Authentication Server is Running! 🚀'
+
 # Route to Send OTP
 @app.route('/send-otp', methods=['POST'])
 def send_otp():
