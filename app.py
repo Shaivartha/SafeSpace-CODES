@@ -3,11 +3,12 @@
 #pip install Flask Flask-Mail
 #pip install flask-cors
 
-
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
 import random
+import os
+
 
 app = Flask(__name__)
 CORS(app)
