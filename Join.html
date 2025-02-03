@@ -30,7 +30,7 @@
 
             // Send the POST request to the /send-otp endpoint
             $.ajax({
-                url: 'http://127.0.0.1:5000/send-otp',
+                url: 'http://10.204.11.180:10000/send-otp',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ email: email }),
@@ -54,7 +54,7 @@
 
             // Send the POST request to the /verify-otp endpoint
             $.ajax({
-                url: 'http://127.0.0.1:5000/verify-otp',
+                url: 'http://10.204.11.180:10000/verify-otp',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ email: email, otp: otp }),
