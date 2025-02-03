@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Authentication</title>
+</head>
+<body>
+    <h2>Enter Your Email</h2>
+    <form id="emailForm">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Send OTP</button>
+    </form>
+
+    <div id="otpSection" style="display:none;">
+        <h3>Enter OTP</h3>
+        <form id="otpForm">
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+            <button type="submit">Verify OTP</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Handle the email form submission
+        $('#emailForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const email = $('#email').val();
+
+            // Send the POST request to the /send-otp endpoint
+            $.ajax({
+                url: 'http://127.0.0.1:5000/send-otp',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ email: email }),
+                success: function(response) {
+                    alert(response.message); // OTP sent message
+                    $('#emailForm').hide();
+                    $('#otpSection').show(); // Show OTP input form
+                },
+                error: function(error) {
+                    alert('Error: ' + error.responseJSON.message);
+                }
+            });
+        });
+
+        // Handle the OTP form submission
+        $('#otpForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const otp = $('#otp').val();
+            const email = $('#email').val();
+
+            // Send the POST request to the /verify-otp endpoint
+            $.ajax({
+                url: 'http://127.0.0.1:5000/verify-otp',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ email: email, otp: otp }),
+                success: function(response) {
+                    alert(response.message); // OTP verification success
+                },
+                error: function(error) {
+                    alert('Error: ' + error.responseJSON.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
