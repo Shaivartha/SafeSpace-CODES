@@ -24,127 +24,137 @@
             padding: 10px 20px;
             background: white;
             color: #08336d;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .menu-icon {
             font-size: 40px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+
         .test-btn {
-            background-color: #ffff;
+            background-color: #ffffff;
             color: #08336d;
-            padding: 10px 5px;
+            padding: 10px 15px;
             border: none;
-            border-radius: 5px;
-            font-size: 20px;
+            border-radius: 8px;
+            font-size: 18px;
             cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .test-btn:hover {
+            background: #08336d;
+            color: white;
+            transform: scale(1.05);
         }
 
         .hero {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 50px;
+            flex-wrap: wrap;
         }
+
         .content {
             flex: 1;
             text-align: left;
-            max-width: 75%;
+            max-width: 600px;
+            padding: 20px;
         }
+
         h2 {
             font-size: 60px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             line-height: 1.3;
+            animation: fadeIn 2s ease-in-out;
         }
+
         h3 {
-            font-size: 30px;
-            margin-bottom: 15px;
-            font-style: bold;
+            font-size: 28px;
+            margin-bottom: 20px;
             font-style: italic;
         }
+
         q {
-            font-family: Arial, sans-serif;
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 24px;
             font-style: italic;
-            quotes: none; 
+            color: #d1e3ff;
         }
 
         a {
             font-size: 20px;
-            margin-bottom: 15px;
+            color: white;
+            text-decoration: none;
         }
+
         .join-btn {
             background: white;
             color: #08336d;
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-size: 22px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .chat-box {
-            background: white;
-            color: black;
-            padding: 25px;
             border-radius: 10px;
-            width: 320px;
-            height: 420px;
-            text-align: left;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
         }
-        .chat-header {
-            font-weight: bold;
-            font-size: 22px;
-            margin-bottom: 10px;
+
+        .join-btn:hover {
+            background: #08336d;
+            color: white;
+            transform: scale(1.1);
         }
-        .chat-messages {
-            height: 80%;
-            overflow-y: auto;
+
+        .chat-box img {
+            width: 384px;
+            height: 504px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease;
         }
-        .message {
-            background: #f1f1f1;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 5px;
-            font-size: 18px;
+
+        .chat-box img:hover {
+            transform: scale(1.05);
         }
-        .chat-input {
-            height: 35px;
-            background: #ddd;
-            border-radius: 5px;
-            margin-top: 10px;
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <h1>SafeSpace</h1>
-        <header>
-            <a href="Test.html">
-              <button class="test-btn">Mental Health Test</button>
-            </a>
-          </header>
-                  
-        <button class="test-btn">Join Community</button>
-        <button class="test-btn">Feedback</button>
-        <button class="test-btn">Contact Us</button>
+        <div>
+            <a href="Test.html"><button class="test-btn">Mental Health Test</button></a>
+            <button class="test-btn">Join Community</button>
+            <button class="test-btn">Feedback</button>
+            <button class="test-btn">Contact Us</button>
+        </div>
         <div class="menu-icon">&#9776;</div>
     </nav>
+
     <section class="hero">
         <div class="content">
             <h2>Speak your heart, <br>Free your soul.</h2>
-            <h3 class="subtext">& express freely.<br/></h3>
-            <header>
-                <a href="Join.html">
-                    <button class="join-btn">Join Us<br/></button>
-                </a>
-              </header>
-            <q class="welcome-text"><br/><br/><br/>Welcome to the Non-Judgemental Space, <br> connect with people who truly get it.</q>
-            <a class="signature"><br/><br/>- SafeSpace</a>
+            <h3>& express freely.</h3>
+            <a href="Join.html"><button class="join-btn">Join Us</button></a>
+            <q>Welcome to the Non-Judgemental Space,<br>connect with people who truly get it.</q>
+            <br><br>
+            <a>- SafeSpace</a>
         </div>
-        <div class="chat-box" style="display: flex; justify-content: center; align-items: center; background: none; padding: 1000; margin: 100; margin-left: -100px; margin-top: 40px; border: none; box-shadow: 0 0 0px #ffff;">
-            <img src="Chatbox.png" alt="Chat Box" style="width: 384px; height: 504px; border-radius: 10px; display: grid; padding: 1000; margin: 100; margin-left: -100px; margin-top: 40px; border: none;box-shadow: 0 0 20px #ffff;">
+
+        <div class="chat-box">
+            <img src="Chatbox.png" alt="Chat Box">
         </div>
-        <div class="chat-input"></div>
     </section>
 </body>
 </html>
+
